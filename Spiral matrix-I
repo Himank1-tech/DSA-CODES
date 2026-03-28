@@ -1,0 +1,101 @@
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+ 
+
+Example 1:
+
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+Example 2:
+
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+ 
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+Solution Code(Java):
+class Solution {
+    public List<Integer>spiralOrder(int[][] matrix){
+        List<Integer>result=new ArrayList<>();
+        int m = matrix.length;
+        int n=matrix[0].length;
+        int topRow=0;
+        int bottomRow=m-1;
+        int leftCol=0;
+        int rightCol=n-1;
+        while(topRow<=bottomRow && leftCol<=rightCol){
+            for(int i=leftCol;i<=rightCol;i++){
+                result.add(matrix[topRow][i]);
+            }
+            topRow++;
+        
+        for(int i=topRow;i<=bottomRow;i++){
+            result.add(matrix[i][rightCol]);
+        }
+        rightCol--;
+    if(topRow<=bottomRow){
+    for(int i=rightCol;i>=leftCol;i--){
+        result.add(matrix[bottomRow][i]);
+    }
+    bottomRow--;
+    }
+if(leftCol<=rightCol){
+for(int i=bottomRow;i>=topRow;i--){
+    result.add(matrix[i][leftCol]);
+}
+leftCol++;
+}
+    
+
+    }
+    return result;
+}
+}
+
+//     public int [][] spiralMatrix(int m,int n,ListNode head) {
+//          int[][] matrix=new int [m][n];
+//          for(int i=0;i<m;i++){
+//             Arrays.fill(matrix[i],-1);
+//          }
+//          int topRow=0,bottomRow=m-1,leftCol=0,rightCol=n-1;
+//          while(head!=null){
+//             for(int col=leftCol;col<=rightCol;col++){
+//                 if(head==null)break;
+//                 matrix[col][topRow]=head.val;
+//                 head=head.next;
+//             }
+//             topRow++;
+         
+//          for(int row=topRow;row<=bottomRow;row++){
+//             if(head==null)break;
+//             matrix[row][rightCol]=head.val;
+//             head=head.next;
+//          }
+//          rightCol--;
+    
+//     for(int col=rightCol;col>=leftCol;col--){
+//         if(head==null)break;
+//         matrix[bottomRow][col]=head.val;
+//         head=head.next;
+//     }
+//     bottomRow--;
+
+// for(int row=bottomRow;row>=topRow;row--){
+//     if(head==null)break;
+//     matrix[leftCol][row]=head.val;
+//     head=head.next;
+// }
+// leftCol++;
+//          }
+//          return matrix;
+//     }
+// }
+         
